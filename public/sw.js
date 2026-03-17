@@ -1,7 +1,7 @@
 const CACHE_NAME = 'formation-pro-v1';
 const ASSETS = [
   './',
-  'index.html',
+  './FormationPro.html',
   'manifest.json',
   'https://unpkg.com/react@18/umd/react.production.min.js',
   'https://unpkg.com/react-dom@18/umd/react-dom.production.min.js',
