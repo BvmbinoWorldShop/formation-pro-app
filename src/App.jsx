@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { KB, detect, webSearch, LIBRARY, CATS, matchCat, ROADMAP_SECTIONS, QUICK } from "./data.js";
 
 
@@ -1005,6 +1006,7 @@ export default function App() {
 
   return (
     <>
+      <Analytics />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
