@@ -1,0 +1,152 @@
+/* ── Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0A0A0A;
+  color: #E8E0D0;
+  font-family: -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,.25); border-radius: 2px; }
+
+/* ── Animations ───────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(201,168,76,.12); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: .25; transform: scale(.7); }
+  50%       { opacity: 1;   transform: scale(1); }
+}
+
+/* ── Page entry ───────────────────────────────────── */
+.fi { animation: fadeSlideUp .22s ease both; }
+
+/* ── Buttons ──────────────────────────────────────── */
+button {
+  transition: transform .12s ease, opacity .12s ease, box-shadow .18s ease, background .15s ease, border-color .15s ease;
+  cursor: pointer;
+}
+
+/* Gold primary button — glow on hover */
+button[style*="background:#C9A84C"],
+button[style*="background: #C9A84C"] {
+  position: relative;
+}
+button[style*="background:#C9A84C"]:hover,
+button[style*="background: #C9A84C"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201,168,76,.35);
+  filter: brightness(1.08);
+}
+button[style*="background:#C9A84C"]:active,
+button[style*="background: #C9A84C"]:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Outline buttons */
+button[style*="background:transparent"]:hover,
+button[style*="background: transparent"]:hover {
+  transform: translateY(-1px);
+  border-color: rgba(201,168,76,.4) !important;
+  color: #C9A84C !important;
+}
+
+/* ── Cards ────────────────────────────────────────── */
+/* Subtle lift on clickable cards */
+div[style*="cursor:pointer"]:hover,
+div[style*="cursor: pointer"]:hover {
+  transform: translateY(-2px);
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+
+div[style*="cursor:pointer"]:active,
+div[style*="cursor: pointer"]:active {
+  transform: translateY(0);
+}
+
+/* ── Bottom nav items ─────────────────────────────── */
+.nb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+  padding: 8px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform .12s ease;
+}
+.nb:hover { transform: translateY(-2px); }
+.nb:active { transform: translateY(0); }
+
+/* ── Chips ────────────────────────────────────────── */
+.chip {
+  padding: 5px 10px;
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 20px;
+  font-size: 10px;
+  color: #8A8070;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: all .15s ease;
+}
+.chip:hover {
+  border-color: #C9A84C;
+  color: #C9A84C;
+  background: rgba(201,168,76,.08);
+  transform: translateY(-1px);
+}
+
+/* ── Input focus ring ─────────────────────────────── */
+input:focus, textarea:focus {
+  border-color: rgba(201,168,76,.5) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201,168,76,.08);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+/* ── Links ────────────────────────────────────────── */
+a { text-decoration: none; }
+
+/* ── Skeleton shimmer (for loading states) ────────── */
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #242424 50%, #1a1a1a 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: 6px;
+}
